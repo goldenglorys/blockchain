@@ -1,7 +1,7 @@
-// const SHA259 = require('crypto-js/sha256');
-const SHAJS = require('sha.js'); //this required safe-buffer module
+const SHA256 = require('crypto-js/sha256');
+// const SHAJS = require('sha.js'); //this required safe-buffer module
 
-let hash = Math.random(); // This stands has the sha256 function that is absent in javascript
+// let hash = Math.random(); // This stands has the sha256 function that is absent in javascript
 // let hash = new SHAJS.sha256().update('42').digest('hex');
 
 let date = new Date(); // Auto capture timestamp begins here
@@ -17,9 +17,9 @@ class Block{
     }// constructors values are initiated once pass through by the Block instance object is created 
     // and you might store the details of the transactions like(how much money was transfferd,the sender and the receiver)
     calculateHash(){
-        // return SHA256(this.index + this.prevHash + this.timestamp + JSON.stringify(this.data)).toString();
+        return SHA256(this.index + this.prevHash + this.timestamp + JSON.stringify(this.data)).toString();
     //    return new SHAJS.sha256().update(this.index + this.prevHash + this.timestamp + JSON.stringify(this.data)).toString('hex');
-        return hash*this.index;
+        // return hash*this.index;
     }// this calculates the hash function of this block by taking its properties and running them through it's function 
     // and then returns the hash which is used to identify the block on the blockchain 
 }
@@ -44,7 +44,7 @@ class Blockchain{
         this.chain.push(newBlock);
     }// this method add a new block to the chain and the newly added block gets the footprint of the previous block in it 
 
-    // blockchain are great because once a block is added it can't be change without invalidating the restof the chain
+    // blockchain are great because once a block is added it can't be change without invalidating the rest of the chain
     // so in reality you can't add a new block to a chain without proper checksum first
     validateChain(){
         for(let i = 1; i < this.chain.length; i++){
