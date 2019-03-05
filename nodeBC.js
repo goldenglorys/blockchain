@@ -63,9 +63,9 @@ class Blockchain{
             transactions : this.current_transaction,
             // hash : null,
             prevHash : prevHash,
-            // calculateHash(){
-            //     return HASH.sha256().update(block).digest('hex');
-            // },
+            calculateHash(){
+                return HASH.sha256().update(block).digest('hex');
+            },
         };
         this.hash = HASH.sha256().update(block).digest('hex');
         this.chain.push(block);
