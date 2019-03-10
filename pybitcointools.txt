@@ -1,0 +1,4 @@
+use PIP INSTALL PYYBITCOINTOOLS
+this can grab data from blockchain.io or blockchain.info open source transactions in form of JSON format
+
+history(addresss of those wallet that have perform transactions)

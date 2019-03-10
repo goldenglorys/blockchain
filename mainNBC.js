@@ -1,71 +1,36 @@
-// let Blockchain = require("./nodeBC");
+let Blockchain = require("./nodeBC")
 
-// let b2 = new Blockchain();
+let b2 = new Blockchain()
 
-// const PROOF = 10;
-
-// let validateProof = (proof) => {
-//     let guessHash = Math.random(proof);
-//     console.log("HASHING ", guessHash);
-//     return guessHash == Math.random(PROOF);
-// }
-
-// let proofOfWork = () => {
-//     let proof = 0;
-//     while(true){
-//         if(!validateProof()){
-//             proof++;
-//         }else{
-//             break;
-//         }
-//     }
-//     return proof;
-// }
-
-// if(proofOfWork() == PROOF){
-//     b2.addNewTransaction("Bob", "Aice", 10);
-//     let prevHash = b2.getLastBlock() ? b2.getLastBlock().hash : null;
-//     b2.addBlock(prevHash);
-// }
-
-// console.log(b2.chain);
-
-
-
-let Blockchain = require("./nodeBC");
-
-let b2 = new Blockchain();
-
-const HASH = require('hash.js')
-const PROOF = 15
-const proofs = 2
+const hash = require('object-hash')
+const PROOF = 200
 
 let validateProof = () => {
-    let guessHash = HASH.sha256().update(proofs).digest('hex')
-    console.log("HASHING:", guessHash + " "+proofs)
-    return guessHash == HASH.sha256().update(PROOF).digest('hex')
+    let guessHash = hash(proof)
+    console.log("GUESSHASH:", guessHash, "Incorrect")
+    return guessHash == hash(PROOF)
 }
 let proofOfWork = () => {
-    let proof = 0
+     proof = 0
     while(true){
         if(!validateProof()){
             proof++
-            console.log(proof)
+            // console.log(proof)
         }else{
-            break;
+            break
         }
     }
     return proof
 }
 
-console.log(proofOfWork())
-
 if(proofOfWork() == PROOF){
-    b2.addNewTransaction("Bob", "Aice", 10);
-    let prevHash = b2.getLastBlock().hash ? b2.getLastBlock().hash : null;
-    b2.addBlock(prevHash);
-}else{
-
+    b2.addNewTransaction( "10ETH", "Bob",  "Alice")
+    // let prevHash = (b2.getLastBlock() == null) ? "Genesis Mining Token" :  b2.getLastBlock().hash
+    b2.addBlock()
+    b2.addNewTransaction( "20ETH", "Pence",  "Trump")
+    b2.addBlock()
+    b2.addNewTransaction( "30ETH", "Pelosi",  "Hillary Crooke")
+    b2.addBlock()
 }
 
-console.log(b2.chain);
+console.log(JSON.stringify(b2.chain, null, 1))
