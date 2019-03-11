@@ -25,12 +25,11 @@ let proofOfWork = () => {
 
 if(proofOfWork() == PROOF){
     b2.addNewTransaction( "10ETH", "Bob",  "Alice")
-    // let prevHash = (b2.getLastBlock() == null) ? "Genesis Mining Token" :  b2.getLastBlock().hash
     b2.addBlock()
-    b2.addNewTransaction( "20ETH", "Pence",  "Trump")
-    b2.addBlock()
-    b2.addNewTransaction( "30ETH", "Pelosi",  "Hillary Crooke")
-    b2.addBlock()
+    // b2.addNewTransaction( "20ETH", "Pence",  "Trump")
+    // b2.addBlock()
+    // b2.addNewTransaction( "30ETH", "Pelosi",  "Hillary Crooke")
+    // b2.addBlock()
 }
 
 console.log(JSON.stringify(b2.chain, null, 1))

@@ -7,6 +7,7 @@ class Blockchain{
         //create transactions datas
         this.current_transaction = []
     }
+   
     //create method to add new block to the chain network
     addBlock(){
         let block = {
@@ -16,12 +17,16 @@ class Blockchain{
             hash : this.sig,
             prevHash : (this.getLastBlock() == undefined) ? "Genesis mining token" : this.getLastBlock().hash,
         }
-        this.sig = hash(block)
+        this.sig = hash(this.block)
+        console.log(this.block.index)
+        console.log(this.sig)
         this.chain.push(block)
         this.current_transaction = []
         return block
     }
-    
+    calcHash(){
+        return hash(this.addBlock().block.index + block.timestamp + block.transactions + block.prevHash)
+    }
     //create method that allow to add new transaction
     addNewTransaction(amount, sender, recipient){
         this.current_transaction.push({ amount, sender, recipient })
