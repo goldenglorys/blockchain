@@ -18,7 +18,7 @@ class Block:
             str(self.prevHash).encode('utf-8'))
         return hash.hexdigest()
 # print(Block('1','1','1','1').calHash())
-
+# class Blockchain:
 def genesisBlock():
     return Block(0, datetime.datetime.now(), 'Genesis Mined Block','0')
 
@@ -28,15 +28,20 @@ def nextBlock(lastBlock):
     thisData = "Hey I'm block " + str(thisIndex)
     thisHash = lastBlock.hash
     return Block(thisIndex, thisTimestamp, thisData, thisHash) 
+        
+# coin = Blockchain()
 
 blockchain = [genesisBlock()]
 prevBlock = blockchain[0]
 
-numOfBlockToAdd = 20
+numOfBlockToAdd = 2
 
 for i in range(0, numOfBlockToAdd):
     blockToAdd = nextBlock(prevBlock)
     blockchain.append(blockToAdd)
     prevBlock = blockToAdd
     print("Block #{} has been added to the blockchain!".format(blockToAdd.index))
-    print("Hash : {}\n".format(blockToAdd.hash))
+    print("Previous Hash : " + blockToAdd.prevHash)
+    print("Hash : {}".format(blockToAdd.hash))
+    print("Block Data : " + blockToAdd.data)
+    print("Timestamp : " + str(blockToAdd.timestamp)+'\n')
