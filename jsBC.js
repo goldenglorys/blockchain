@@ -12,7 +12,7 @@
             this.index = index
             this.timestamp = timestamp
             this.formatedDate = formatedDate
-            this.formatedTime = timeSend
+            this.formatedTime = formatedTime
             this.transactionData = [transactionData]
             this.prevHash = prevHash
             this.hash = this.calculateHash()

@@ -25,7 +25,7 @@ class Blockchain{
         return block
     }
     calcHash(){
-        return hash(this.addBlock().block.index + block.timestamp + block.transactions + block.prevHash)
+        return hash(this.addBlock().block.index + block.timestamp + block.transactions)
     }
     //create method that allow to add new transaction
     addNewTransaction(amount, sender, recipient){
