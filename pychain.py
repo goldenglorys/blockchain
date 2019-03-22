@@ -31,27 +31,27 @@ def nextBlock(lastBlock):
         
 # coin = Blockchain()
 
-class Chain:
-    def __init__(self):
-        self.chain = [genesisBlock()]
+# class Chain:
+#     def __init__(self):
+#         self.chain = [genesisBlock()]
 
-    def genesisBlock():
-        return Block(0, datetime.datetime.now(), 'Genesis Mined Block','0')
+#     def genesisBlock():
+#         return Block(0, datetime.datetime.now(), 'Genesis Mined Block','0')
 
-    def lastBlock(self):
-        return len(self.chain) - 1
+#     def lastBlock(self):
+#         return len(self.chain) - 1
 
-    def add(newBlock):
-        newBlock.index = len(self.chain) + 1
-        newBlock.prevHash = self.lastBlock().hash
-        newBlock.hash = newBlock.calHash()
-        self.chain.append(newBlock)
+#     def add(newBlock):
+#         newBlock.index = len(self.chain) + 1
+#         newBlock.prevHash = self.lastBlock().hash
+#         newBlock.hash = newBlock.calHash()
+#         self.chain.append(newBlock)
 
-def proofOfWork(lastProof):
-    incrementor = lastProof + 1
-    while not (incrementor % 9 == 0 incrementor % lastProof == 0):
-        incrementor += 1
-    return incrementor
+# def proofOfWork(lastProof):
+#     incrementor = lastProof + 1
+#     while not (incrementor % 9 == 0 incrementor % lastProof == 0):
+#         incrementor += 1
+#     return incrementor
 
 def mine():
     lastBlock = blockchain[len(blockchain) - 1]

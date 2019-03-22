@@ -35,25 +35,22 @@ class Block{
     }
 
     mineBlock(difficulty){
-        let noOfHash = 1
         while(true){
             if(this.validate(difficulty) !== Array(difficulty + 1 ).join('0')){
                 this.nonce++
                 this.hash = this.calculateHash()
-                noOfHash++
             }else{
                 break
             } 
         }
         console.log("Proof reached and block mined with hash : ", this.hash)
-        console.log("Number of Hash Calculated : ", noOfHash)
     }
 }
 
 class Blockchain{
     constructor(){
         this.chain = [this.createGenesisBlock()]
-        this.difficulty = 3
+        this.difficulty = 4
         this.pendingTransactions = []
         this.miningReward = 100
     }
@@ -61,6 +58,7 @@ class Blockchain{
     createGenesisBlock(){
         return new Block(0, Date.now(), dateSend, timeSend, {fromAddress : 'Genesis Mining', toAddress : "Genesis Miner-address", amount: '400'}, "previous hash is none")
     }
+
     getLatestBlock(){
         return this.chain[this.chain.length - 1]
     }
